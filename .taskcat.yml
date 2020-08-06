@@ -4,7 +4,6 @@ project:
   package_lambda: false
   regions:
   - us-east-1
-  - us-east-2
   - us-west-2
   s3_bucket: ''
 tests:
@@ -12,8 +11,6 @@ tests:
     parameters:
       AvailabilityZones: $[alfred_genaz_2]
       ElasticsearchNodeCount: '2'
-      ElasticsearchNodeType: t2.small.elasticsearch
-      KeyPairName: taskcat-test
       KinesisDataStreamName: streaming-submissions
       KinesisDataStreamS3Prefix: streaming-submissions
       QSS3BucketName: $[taskcat_autobucket]
@@ -28,20 +25,16 @@ tests:
       VPCDefinition: QuickstartDefault
       KeyPairName: $[taskcat_getkeypair]
     regions:
-    - us-east-2
+    - us-east-1
     s3_bucket: ''
     template: templates/data-lake-master.yaml
   single-node-with-wizard:
     parameters:
       AvailabilityZones: $[alfred_genaz_2]
       ElasticsearchNodeCount: '1'
-      ElasticsearchNodeType: t2.small.elasticsearch
-      KeyPairName: taskcat-test
       KinesisDataStreamName: streaming-submissions
       KinesisDataStreamS3Prefix: streaming-submissions
       NotebookInstanceName: SageMakerNotebookInstTestDev
-      NotebookInstanceType: ml.t2.medium
-      NotebookTrainingInstanceType: ml.m5.2xlarge
       QSS3BucketName: $[taskcat_autobucket]
       QSS3BucketRegion: $[taskcat_current_region]
       RedshiftDatabaseName: testdb
@@ -54,7 +47,6 @@ tests:
       VPCDefinition: QuickstartDefault
       KeyPairName: $[taskcat_getkeypair]
     regions:
-    - us-east-1
     - us-west-2
     s3_bucket: ''
     template: templates/data-lake-master.yaml
